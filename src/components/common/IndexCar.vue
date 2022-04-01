@@ -16,18 +16,29 @@
       type="text"
       placeholder="请输入商品名"
     >
+     <button class="searchBak el-icon-search"></button>
     <div v-show="isShow">
       <div
         v-for="(item,index) in searchData"
         :key="index"
       >
-      <span style="background:white" v-html="brightenKeyword(item.comname, inputValue)" @click="showInfo(item.id)"></span>
+      <span  class="item" v-html="brightenKeyword(item.comname, inputValue)" @click="showInfo(item.id)"></span>
       </div>
     </div>
 
 
 
       </div>
+      <el-carousel 
+    type="card"
+    :interval=3000
+    class="carousel"
+    >
+      <el-carousel-item v-for="(img,index) in pics" :key="index" >
+        <img :src="img.url" width="100%" height="100%">
+      </el-carousel-item>
+    </el-carousel>
+      <recom class="reco"></recom>
      <el-carousel 
     type="card"
     :interval=3000
@@ -52,7 +63,7 @@
         <img :src="img.url" width="100%" height="100%">
       </el-carousel-item>
     </el-carousel>
-     <h3>推荐物品</h3>
+     <h3>我的收藏</h3>
      <clist v-bind:type="2"></clist>
     </el-main>
 
@@ -81,13 +92,14 @@ import IndexUser from '../indexUser.vue'
 import Cookies from "js-cookie";
 import Clist from '../common/CListTemp.vue'
 import NoticeTemp from '../common/NoticeTemp.vue'
+import Recom from '../common/recom.vue'
   export default {
       created(){
           this.getList();
         this.showNotice();
         this.getParams();
       },
-    components: {IndexUser,Clist,NoticeTemp},
+    components: {IndexUser,Clist,NoticeTemp,Recom},
     data(){
       return{
          list:[],
@@ -109,19 +121,19 @@ import NoticeTemp from '../common/NoticeTemp.vue'
        },
       ],
 pics: [
-        { url: require('D://workspace//img//d1.jpg')},
-        { url:require('D://workspace//img//d2.jpg')},
-        { url: require('D://workspace//img//d3.jpg')},
+        { url: require('D://workspace//img//s1.jpg')},
+        { url:require('D://workspace//img//s2.jpg')},
+        { url: require('D://workspace//img//s3.jpg')},
       ],
       pics1: [
-        { url: require('D://workspace//img//d4.jpg')},
-        { url:require('D://workspace//img//d5.jpg')},
-        { url: require('D://workspace//img//d6.jpg')},
+        { url: require('D://workspace//img//s4.jpg')},
+        { url:require('D://workspace//img//s5.jpg')},
+        { url: require('D://workspace//img//s6.jpg')},
       ],
       pics2: [
-        { url: require('D://workspace//img//d7.jpg')},
-        { url:require('D://workspace//img//d8.jpg')},
-        { url: require('D://workspace//img//d9.jpg')},
+        { url: require('D://workspace//img//s7.jpg')},
+        { url:require('D://workspace//img//s8.jpg')},
+        { url: require('D://workspace//img//s9.jpg')},
       ],
       }
       
@@ -232,6 +244,16 @@ if(key==="out_trade_no"){
 </script>
 
 <style scoped>
+.reco{
+  background: bisque;
+}
+.searchBak{
+  height: 30px;
+  width: 30px;
+  background: red;
+  color: blue;
+  border-radius: 30%;
+}
   .search{
      position:absolute;
      z-index: 5;
@@ -250,6 +272,9 @@ h3{
     margin-bottom: -80px;
     margin-top: 20px;
     color: rebeccapurple;
+}
+.item{
+  background: bisque;
 }
 </style>
 

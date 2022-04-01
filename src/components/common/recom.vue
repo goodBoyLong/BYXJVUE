@@ -48,22 +48,9 @@
 
 export default {
   created() {
-
+this.getList();
   },
-  props:{
-    carList:{
-      type:Array,
-      require:true
-    },
 
-  },
-  watch: {
-		// newVal 获取props中的值，方法名 = props中的参数			
-		carList(newVal, oldVal) {
-      // alert(newVal.length)
-			this.totalCount = newVal.length
-		}
-	},
   data() {
     return{
        // 总数据
@@ -75,12 +62,20 @@ export default {
            pageSizes:[6,12],
            // 默认每页显示的条数（可修改）
            PageSize:6,
+           carList:'',
 
 
     }
   },
 
   methods:{
+         async getList(){
+const {data:res}= await this.$http.post("/index/getReco?uid=1");
+     
+          this.carList=res.reco;
+          this.totalCount=res.list.reco
+          
+      },
      // 分页
         // 每页显示的条数
        handleSizeChange(val) {

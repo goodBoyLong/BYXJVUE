@@ -35,15 +35,22 @@ import MyCommidity from '../components/user/MyCommidity.vue'
 import MyCommidity1 from '../components/user/MyCommidity1.vue'
 import MyOrder from '../components/user/MyOrder.vue'
 import MySell from '../components/user/MySell.vue'
-
+import Zhu from '../components/user/Zhu.vue'
 import Viewer from 'v-viewer'
 import 'viewerjs/dist/viewer.css'
+import moment from 'moment'
+
+Vue.filter('dateFormat',function(dataStr,pattern="YYYY-MM-DD HH:mm:ss"){
+  return moment(dataStr).format(pattern)
+})
+
 Vue.use(VueRouter)
 
 Vue.use(Viewer)
 Viewer.setDefaults({
   Options: { 'inline': true, 'button': true, 'navbar': true, 'title': true, 'toolbar': true, 'tooltip': true, 'movable': true, 'zoomable': true, 'rotatable': true, 'scalable': true, 'transition': true, 'fullscreen': true, 'keyboard': true, 'url': 'data-source' }
 })
+
 
 const routes = [
   {
@@ -141,7 +148,10 @@ component:indexCar
         component:MySell
       },
 
-
+      {
+        path:"/zhu",
+        component:Zhu
+      },
 
 
       {

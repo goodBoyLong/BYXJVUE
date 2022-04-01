@@ -47,7 +47,11 @@
         <span style="color:red">￥{{scope.row.price}}</span>
         </template>
       </el-table-column>
-      <el-table-column prop="purchaseTime" label="购买时间" width="130"> </el-table-column>
+  <el-table-column prop="" label="购买时间" width="130">
+    <template slot-scope="scope">
+              <span >  {{  scope.row.purchaseTime|  dateFormat}}</span>
+          </template>
+         </el-table-column>
 
      
       <el-table-column  label="状态" width="80">
@@ -112,9 +116,9 @@ export default {
            currentPage:1,
            // 总条数，根据接口获取数据长度(注意：这里不能为空)
            totalCount:1,
-           pageSizes:[5,10,15],
+          pageSizes:[10,15,20],
            // 默认每页显示的条数（可修改）
-           PageSize:5,
+           PageSize:15,
       queryForm:
        {
         cname: "",

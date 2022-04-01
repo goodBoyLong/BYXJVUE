@@ -18,6 +18,7 @@
         <h4 style="margin-top:20px"><img class="avator" :src="require('D://workspace//img//1.jpg')" alt="">{{uname}}</h4>
 
         <h2 style="margin-top:20px;font-size:15px"><span style="font-size:20px">【商品介绍】</span>{{carInfo.info}}</h2>
+         <h2 style="margin-top:20px;font-size:15px"><span style="font-size:20px">【销量】</span>{{carInfo.sales}}</h2>
         <h3 style="color:#E7503C;margin-top:20px">￥{{carInfo.price}}</h3>
         <h3 style="margin-top:20px">{{carInfo.carInfo}}</h3>
 

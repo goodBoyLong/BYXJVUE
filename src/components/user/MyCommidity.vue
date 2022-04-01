@@ -357,9 +357,9 @@ export default {
            currentPage:1,
            // 总条数，根据接口获取数据长度(注意：这里不能为空)
            totalCount:1,
-           pageSizes:[1,2,3],
+           pageSizes:[10,15,20],
            // 默认每页显示的条数（可修改）
-           PageSize:1,
+           PageSize:10,
       queryForm: {
         comname: "",
         uid: "",
@@ -612,7 +612,7 @@ this.addForm.price="";
     uploadImg() {
       console.log("this.$refs.imgUpload.url" + this.$refs.imgUpload.url);
       this.addForm.img = this.$refs.imgUpload.url;
-      alert(this.addForm.img)
+    
       
     },
       uploadImgUpdate() {
